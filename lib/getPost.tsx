@@ -11,9 +11,13 @@ const QUERY = gql`
     }
     }`;
 
+type data = {
+    post: Post
+}
+
 export default async function getPost(slug: string) {
     console.log(slug)
-    const { post } = await graphCMS.request(QUERY, {slug})
+    const { post }: data = await graphCMS.request(QUERY, {slug})
     console.log('post',post)
     if(!post) throw new Error('Failed to fetch post data')
     return post

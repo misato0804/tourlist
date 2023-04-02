@@ -11,3 +11,4 @@ type City = {
     posts: Post[],
     image: string
 }
+

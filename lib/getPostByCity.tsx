@@ -19,9 +19,13 @@ const QUERY = gql`
     }
 `;
 
+type data = {
+    city: City
+}
+
 export default async function getPostsByCity(cityName: string) {
     const param = cityName.charAt(0).toUpperCase()+cityName.slice(1)
-    const {city} = await graphCMS.request(QUERY, {name: param})
+    const {city}: data = await graphCMS.request(QUERY, {name: param})
     if(!city) throw new Error('Failed to fetch data')
     return city
 }
