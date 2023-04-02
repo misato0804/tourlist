@@ -11,8 +11,6 @@ type Params = {
 }
 
 export const generateMetadata = async({params: {slug}}: Params) : Promise<Metadata> => {
-    console.log(slug)
-
     const postData: Promise<Post> = getPost(slug)
     const post : Post = await postData
     return {

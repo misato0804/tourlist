@@ -1,6 +1,7 @@
 import getPost from "@/lib/getPost";
 import React, {Suspense} from "react";
 import getPostsByCity from "@/lib/getPostByCity";
+import getCities from "@/lib/getCities";
 
 type Params = {
     params: {
@@ -32,3 +33,12 @@ const PostPage = async ({params: {city}}: Params) => {
 };
 
 export default PostPage;
+
+export async function generateStaticParams() {
+    const citiesData : Promise<City[]> = getCities();
+    const citiesInfo: City[] = await citiesData
+
+    return citiesInfo.map(cityInfo => ({
+            city: cityInfo.name
+        }))
+}
