@@ -21,8 +21,8 @@ export const generateMetadata = async({params: {slug}}: Params) : Promise<Metada
 
 const PostPage = async ({params: {city,slug}}: Params) => {
     console.log(slug, city)
-    // const postData: Promise<Post> = getPost(slug)
-    // console.log(postData)
+    const postData: Promise<Post> = getPost(slug)
+    console.log(postData)
     // const [post] = await Promise.all([postData])
 
     return (

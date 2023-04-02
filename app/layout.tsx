@@ -1,6 +1,7 @@
 import './globals.css'
 import { Nunito } from 'next/font/google'
 import type { Metadata } from 'next'
+import Header from "@/app/component/Header";
 
 export const metadata : Metadata = {
   title: 'Tourlist',
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-      <nav><h1>Nav</h1></nav>
+      <Header/>
       {children}
       </body>
     </html>

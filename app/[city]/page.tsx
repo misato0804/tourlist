@@ -1,7 +1,8 @@
 import getPost from "@/lib/getPost";
-import React, {Suspense} from "react";
+import React, {Suspense, useState} from "react";
 import getPostsByCity from "@/lib/getPostByCity";
 import getCities from "@/lib/getCities";
+import Link from "next/link";
 
 type Params = {
     params: {
@@ -23,10 +24,17 @@ const PostPage = async ({params: {city}}: Params) => {
     const cityData : Promise<City> = getPostsByCity(city)
     const data : City = await cityData
     const cityInfo = await data
+    const content = cityInfo.posts.map(post => (
+        <section>
+            <h1>{post.title}</h1>
+            <Link href={`/${city}/${post.slug}`}>{post.title}</Link>
+        </section>
+    ))
     return (
         <div>
             <Suspense fallback={<h2>...loading...</h2>}>
                 <h1>{city}</h1>
+                {content}
             </Suspense>
         </div>
     );

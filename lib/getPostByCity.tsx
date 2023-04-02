@@ -9,7 +9,7 @@ const QUERY = gql`
             image{
                 url
             }
-            posts {
+            posts (first:100){
                 id
                 title
                 link

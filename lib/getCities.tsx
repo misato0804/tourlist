@@ -3,9 +3,12 @@ import graphCMS from "@/lib/graphCMS";
 
 const QUERY = gql`
     query MyQuery {
-        cities {
+        cities{
             id
             name
+            posts (first:100){
+                title
+            }
             image {
                 url
             }
