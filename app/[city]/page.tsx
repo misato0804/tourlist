@@ -25,7 +25,7 @@ const PostPage = async ({params: {city}}: Params) => {
     const data : City = await cityData
     const cityInfo = await data
     const content = cityInfo.posts.map(post => (
-        <section>
+        <section key={post.title}>
             <h1>{post.title}</h1>
             <Link href={`/${city}/${post.slug}`}>{post.title}</Link>
         </section>
@@ -35,6 +35,13 @@ const PostPage = async ({params: {city}}: Params) => {
             <Suspense fallback={<h2>...loading...</h2>}>
                 <h1>{city}</h1>
                 {content}
+                <h1>Hello</h1>
+                <h1>Hello</h1>
+                <h1>Hello</h1>
+                <h1>Hello</h1>
+                <h1>Hello</h1>
+                <h1>Hello</h1>
+                <h1>Hello</h1>
             </Suspense>
         </div>
     );
