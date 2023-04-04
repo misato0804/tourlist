@@ -2,7 +2,14 @@ type Post = {
     id:string,
     title: string,
     slug: string,
-    link: string
+    coverPhoto: {
+        url: string
+    },
+    link: string,
+    location: any,
+    jpy: number,
+    category: string[],
+    cad: number,
 }
 
 type City = {

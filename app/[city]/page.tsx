@@ -1,8 +1,7 @@
-import getPost from "@/lib/getPost";
-import React, {Suspense, useState} from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import getPostsByCity from "@/lib/getPostByCity";
 import getCities from "@/lib/getCities";
-import Link from "next/link";
+import Main from "@/app/[city]/component/Main";
 
 type Params = {
     params: {
@@ -10,40 +9,26 @@ type Params = {
     }
 }
 
-export async function generateMetadata({params: {city}}: Params) {
+async function generateMetadata({params: {city}}: Params) {
     const cityData : Promise<City> = getPostsByCity(city)
     const data : City = await cityData
     return {
         title: data.name,
         description: `This is page of ${data.name}`
     }
-
 }
 
 const PostPage = async ({params: {city}}: Params) => {
+
     const cityData : Promise<City> = getPostsByCity(city)
     const data : City = await cityData
     const cityInfo = await data
-    const content = cityInfo.posts.map(post => (
-        <section key={post.title}>
-            <h1>{post.title}</h1>
-            <Link href={`/${city}/${post.slug}`}>{post.title}</Link>
-        </section>
-    ))
+    console.log(typeof cityInfo)
+
     return (
-        <div>
-            <Suspense fallback={<h2>...loading...</h2>}>
-                <h1>{city}</h1>
-                {content}
-                <h1>Hello</h1>
-                <h1>Hello</h1>
-                <h1>Hello</h1>
-                <h1>Hello</h1>
-                <h1>Hello</h1>
-                <h1>Hello</h1>
-                <h1>Hello</h1>
-            </Suspense>
-        </div>
+        <>
+            <Main city={city as string} cityData={cityInfo}/>
+        </>
     );
 };
 

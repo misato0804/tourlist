@@ -16,9 +16,7 @@ type data = {
 }
 
 export default async function getPost(slug: string) {
-    console.log(slug)
     const { post }: data = await graphCMS.request(QUERY, {slug})
-    console.log('post',post)
     if(!post) throw new Error('Failed to fetch post data')
     return post
 }

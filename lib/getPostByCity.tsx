@@ -14,6 +14,12 @@ const QUERY = gql`
                 title
                 link
                 slug
+                coverPhoto {
+                    url
+                }
+                category
+                jpy
+                cad
             }
         }
     }
