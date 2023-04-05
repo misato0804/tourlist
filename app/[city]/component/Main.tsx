@@ -42,6 +42,10 @@ const Main = ({city, cityData}: MainProps) => {
         return <h1>Loading</h1>
     }
 
+    const onClickEvent = (e: React.MouseEvent<HTMLDivElement>) => {
+
+    }
+
     const mainTextStyle = `
         absolute 
         top-12
@@ -103,7 +107,7 @@ const Main = ({city, cityData}: MainProps) => {
 
                         {/*  main */}
                         <div className='w-full h-[75vh] py-8 px-4 bg-slate-300 h-1/4 max-[500px]:col-span-7 max-lg:col-span-8'>
-                            <div className='w-full h-full grid md:grid-cols-2 gap-5 overflow-scroll'>
+                            <div className='w-full h-full grid lg:grid-cols-2 gap-5 overflow-scroll'>
                                 {posts.length > 0 && posts.map(post => <PostCard key={post.id} post={post}/>)}
                             </div>
                         </div>

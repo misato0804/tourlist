@@ -23,7 +23,6 @@ const PostPage = async ({params: {city}}: Params) => {
     const cityData : Promise<City> = getPostsByCity(city)
     const data : City = await cityData
     const cityInfo = await data
-    console.log(typeof cityInfo)
 
     return (
         <>

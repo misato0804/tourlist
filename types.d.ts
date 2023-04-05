@@ -10,6 +10,9 @@ type Post = {
     jpy: number,
     category: string[],
     cad: number,
+    city: {
+        name: string
+    }
 }
 
 type City = {

@@ -20,6 +20,9 @@ const QUERY = gql`
                 category
                 jpy
                 cad
+                city {
+                    name
+                }
             }
         }
     }

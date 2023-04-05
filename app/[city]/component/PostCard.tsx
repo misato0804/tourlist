@@ -1,21 +1,26 @@
+'use client';
+
 import React from 'react';
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
 type PostCardProps = {
-    post: Post
+    post: Post,
 }
 
 const PostCard = ({post}: PostCardProps) => {
-
-    console.log(post)
+    const router = useRouter()
 
     return (
-        <div className='grid xs:grid-rows-2 sm:grid-cols-2 gap-2 px-4 py-4 bg-zinc-50 cursor-pointer hover:opacity-60'>
+        <div
+            onClick={ () => router.push(`/${post.city.name}/${post.slug}`)}
+            className='grid xs:grid-rows-2 sm:grid-cols-2 gap-2 px-4 py-4 bg-zinc-50 cursor-pointer hover:opacity-60 max-h-[16rem]'>
+
             <div className=''>
                 <Image
                     src={post.coverPhoto.url as string}
                     alt={post.title}
-                    style={{width: '100%', height: '170px', objectFit: 'cover', objectPosition: "center",}}
+                    style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: "center",}}
                     width={100}
                     height={100}
                 />
