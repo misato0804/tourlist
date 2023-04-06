@@ -42,9 +42,6 @@ const Main = ({city, cityData}: MainProps) => {
         return <h1>Loading</h1>
     }
 
-    const onClickEvent = (e: React.MouseEvent<HTMLDivElement>) => {
-
-    }
 
     const mainTextStyle = `
         absolute 
@@ -76,10 +73,10 @@ const Main = ({city, cityData}: MainProps) => {
                 />
                 <h1 className={mainTextStyle}>{city}</h1>
 
-                <div className='w-[90vw] absolute top-2/3  left-1/2 transform -translate-x-1/2 -translate-y-2/3 '>
-                    <div className="max-lg:grid max-lg:grid-cols-10 lg:mt-6">
+                <div className='w-[90vw] absolute top-32  left-1/2 transform -translate-x-1/2  '>
+                    <div className="max-lg:grid max-lg:grid-cols-10 ">
                         {/*   siori */}
-                        <div className='w-full max-[500px]:col-span-3 max-lg:col-span-2 lg:overflow-x-scroll'>
+                        <div className='w-full max-[500px]:col-span-3 max-lg:col-span-2 lg:overflow-x-scroll '>
 
                             <div className={`max-lg:grid max-lg:grid-rows-11 max-lg:gap-2 max-lg:h-3/4 lg:flex lg:w-[150%]`}>
 

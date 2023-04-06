@@ -14,8 +14,6 @@ type MainProp = {
 
 const Main = ({city, postData}: MainProp) => {
 
-    console.log(postData.location)
-
     return (
         <div className='relative w-screen h-screen'>
             <Suspense fallback={<h2>...loading...</h2>}>
@@ -32,9 +30,8 @@ const Main = ({city, postData}: MainProp) => {
                     }}
                     priority
                 />
-                <div className='w-[90vw] absolute top-10  left-1/2 transform -translate-x-1/2 '>
+                <div className='w-[90vw] absolute top-10  left-1/2 transform -translate-x-1/2'>
                     <div className={`w-full h-[40vh]`}>
-                        <h1 className='text-3xl md:text-5xl font-extrabold mb-3'>{postData.title}</h1>
                         <Image
                             src={postData.coverPhoto.url}
                             alt={`${city} image`}
@@ -43,12 +40,19 @@ const Main = ({city, postData}: MainProp) => {
                             height={100}
                             priority
                         />
-                        <h2 className='font-bold bg-yellow-950 text-slate-50 my-3 rounded-lg py-2 flex items-center justify-center'>
+                        <h1 className='text-3xl md:text-5xl font-extrabold my-4'>{postData.title}</h1>
+                        <h2 className='cursor-pointer font-bold bg-yellow-950 text-slate-50 my-3 rounded-lg py-2 flex items-center justify-center'>
                             <BiLinkExternal/>
                             <Link href={postData.link} target="_blank">GO TO OFFICIAL SITE</Link>
                         </h2>
-                        <div className='md:grid md:grid-cols-7 gap-3 px-4 py-2'>
-                            <div className='col-span-4'>
+                        <div className='flex gap-3'>
+                            {postData.category.map(cate =>
+                                <h6 key={cate}
+                                    className='text-center bg-cyan-950 rounded-md text-[#fff] text-xs py-0.5 px-2'>{cate}</h6>
+                            )}
+                        </div>
+                        <div className='md:grid md:grid-cols-7 gap-3 px-4 py-2 mt-5 md:mt-10'>
+                            <div className='col-span-4 my-3'>
                                 <p className=''>a museum showcasing the work of the Japanese animation studio Studio
                                     Ghibli. It is
                                     located in Inokashira Park in Mitaka, a western city of Tokyo, Japan. The museum
@@ -59,6 +63,12 @@ const Main = ({city, postData}: MainProp) => {
                                     for exclusive short films by Studio Ghibli.</p>
                             </div>
                             <GoogleMap center={postData.location}/>
+                        </div>
+                        <div className='flex justify-evenly my-3'>
+                            <h3 className='bg-yellow-700 py-2 px-3 md:px-7 rounded-2xl text-slate-50'><strong>CAD: </strong>${postData.cad} 〜</h3>
+                            <h3 className='bg-yellow-700 py-2 px-3 md:px-7 rounded-2xl text-slate-50'><strong>JPY: </strong>￥{postData.jpy} 〜</h3>
+                        </div>
+                        <div className='h-9'>
                         </div>
                     </div>
                 </div>

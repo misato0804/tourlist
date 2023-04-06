@@ -1,6 +1,7 @@
 import './globals.css'
 import { Montserrat } from 'next/font/google'
 import type { Metadata } from 'next'
+import BackToHome from "@/app/component/BackToHome";
 
 export const metadata : Metadata = {
   title: 'Tourlist',
