@@ -16,11 +16,11 @@ const PostCard = ({post}: PostCardProps) => {
             onClick={() => router.push(`/${post.city.name}/${post.slug}`)}
             className='grid xs:grid-rows-2 sm:grid-cols-2 gap-2 px-4 py-4 bg-zinc-50 cursor-pointer hover:opacity-60  max-h-[25rem] lg:max-h-[16rem]'>
 
-            <div className=''>
+            <div className='w-full h-full'>
                 <Image
                     src={post.coverPhoto.url as string}
                     alt={post.title}
-                    style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: "center",}}
+                    style={{width: '100%', maxHeight:'14rem', objectFit: 'cover', objectPosition: "center",}}
                     width={100}
                     height={100}
                 />

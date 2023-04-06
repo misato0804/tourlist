@@ -84,14 +84,14 @@ const Main = ({city, cityData}: MainProps) => {
                                 <div
                                     className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:py-2 lg:rounded-t-md'>
                                     <div
-                                        onClick={() => setPosts(cityData.posts)}
+                                        onPointerEnter={() => setPosts(cityData.posts)}
                                         className={`w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                         <h1 className='text-center'>All</h1>
                                     </div>
                                 </div>
                                 {category.map(item => (
                                     <div
-                                        onClick={(e) => onClickHandler(e)}
+                                        onPointerEnter ={(e) => onClickHandler(e)}
                                         key={item}
                                         className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
                                         <div
