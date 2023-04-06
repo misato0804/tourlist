@@ -41,7 +41,7 @@ const GoogleMapComponent = ({center}: Props) => {
     return (
         <div className='w-full col-span-3'>
             <LoadScript
-                googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API}
+                googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API as string}
             >
                 <GoogleMap
                     mapContainerStyle={containerStyle}
