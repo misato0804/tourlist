@@ -7,6 +7,7 @@ import Kyoto from "@/public/image/kyoto.jpg";
 import Osaka from "@/public/image/osaka.jpg";
 import PostCard from "@/app/[city]/component/PostCard";
 import category from "@/lib/category";
+import Loading from "@/app/component/Loading";
 
 type MainProps = {
     city: string,
@@ -39,7 +40,7 @@ const Main = ({city, cityData}: MainProps) => {
 
 
     if (!image) {
-        return <h1>Loading</h1>
+        return <Loading/>
     }
 
 
@@ -58,7 +59,7 @@ const Main = ({city, cityData}: MainProps) => {
 
     return (
         <div className='relative w-screen h-screen'>
-            <Suspense fallback={<h2>...loading...</h2>}>
+            <Suspense fallback={<Loading/>}>
                 <Image
                     src={image}
                     alt={`${city} image`}
@@ -92,9 +93,9 @@ const Main = ({city, cityData}: MainProps) => {
                                     <div
                                         onClick={(e) => onClickHandler(e)}
                                         key={item}
-                                        className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:py-2 lg:rounded-t-md lg:ml-2'>
+                                        className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
                                         <div
-                                            className={`w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
+                                            className={`lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                             <h1 className='text-center'>{item.charAt(0).toUpperCase() + item.slice(1)}</h1>
                                         </div>
                                     </div>))}

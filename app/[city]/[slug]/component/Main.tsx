@@ -6,6 +6,7 @@ import back from '../../../../public/image/japanese-paper_00184.jpg'
 import Link from "next/link";
 import {BiLinkExternal} from 'react-icons/bi';
 import GoogleMap from "@/app/[city]/[slug]/component/GoogleMap";
+import Loading from "@/app/component/Loading";
 
 type MainProp = {
     city: string,
@@ -16,7 +17,7 @@ const Main = ({city, postData}: MainProp) => {
 
     return (
         <div className='relative w-screen h-screen'>
-            <Suspense fallback={<h2>...loading...</h2>}>
+            <Suspense fallback={<Loading/>}>
                 <Image
                     src={back}
                     alt={`${city} image`}
