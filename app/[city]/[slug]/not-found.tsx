@@ -4,7 +4,7 @@ import React from 'react';
 const NotFound = () => {
     return (
         <div>
-            Not Found
+            Sorry something went wrong
         </div>
     );
 };
