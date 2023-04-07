@@ -32,7 +32,7 @@ const Main = ({city, cityData}: MainProps) => {
     }, [city])
 
 
-    const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    const onClickHandler = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
         const clickedCategory = e.currentTarget.innerText.toLowerCase()
         const arr = cityData.posts.filter(post => post.category.includes(clickedCategory))
         setPosts(arr)
@@ -84,14 +84,15 @@ const Main = ({city, cityData}: MainProps) => {
                                 <div
                                     className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:py-2 lg:rounded-t-md'>
                                     <div
-                                        onClick ={() => setPosts(cityData.posts)}
+                                        onClick ={(e: React.TouchEvent | React.MouseEvent) => setPosts(cityData.posts)}
                                         className={`z-[999] w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                         <h1 className='text-center'>All</h1>
                                     </div>
                                 </div>
                                 {category.map(item => (
                                     <div
-                                        onClick ={(e) => onClickHandler(e)}
+                                        // onClick ={(e) => onClickHandler(e)}
+                                        onTouchStart={event => onClickHandler(event)}
                                         key={item}
                                         className=' bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
                                         <div
