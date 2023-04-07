@@ -84,18 +84,18 @@ const Main = ({city, cityData}: MainProps) => {
                                 <div
                                     className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:py-2 lg:rounded-t-md'>
                                     <div
-                                        onPointerEnter={() => setPosts(cityData.posts)}
-                                        className={`w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
+                                        onClick ={() => setPosts(cityData.posts)}
+                                        className={`z-[999] w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                         <h1 className='text-center'>All</h1>
                                     </div>
                                 </div>
                                 {category.map(item => (
                                     <div
-                                        onPointerEnter ={(e) => onClickHandler(e)}
+                                        onClick ={(e) => onClickHandler(e)}
                                         key={item}
-                                        className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
+                                        className=' bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
                                         <div
-                                            className={`lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
+                                            className={`z-[999] lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                             <h1 className='text-center'>{item.charAt(0).toUpperCase() + item.slice(1)}</h1>
                                         </div>
                                     </div>))}
