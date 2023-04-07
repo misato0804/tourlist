@@ -19,7 +19,6 @@ const Main = ({city, cityData}: MainProps) => {
     const [image, setImage] = useState<StaticImageData | undefined>()
     const [showCategory, setShowCategory] = useState('all')
     const [posts, setPosts] = useState<Post[]>(cityData.posts)
-    const [word, setWord] = useState<string>('')
 
     useEffect(() => {
         cityData.posts && setPosts(cityData.posts)
@@ -33,7 +32,7 @@ const Main = ({city, cityData}: MainProps) => {
     }, [city])
 
 
-    const onClickHandler = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    const onClickHandler = (e: any) => {
         const clickedCategory = e.currentTarget.innerText.toLowerCase()
         const arr = cityData.posts.filter(post => post.category.includes(clickedCategory))
         setPosts(arr)
@@ -58,11 +57,6 @@ const Main = ({city, cityData}: MainProps) => {
         font-extrabold
     `
 
-    const onTouchHandler = (e: React.TouchEvent<HTMLDivElement>) => {
-        console.log(e.currentTarget.innerText)
-        setWord(e.currentTarget.innerText)
-    }
-
     return (
         <div className='relative w-screen h-screen'>
             <Suspense fallback={<Loading/>}>
@@ -79,10 +73,6 @@ const Main = ({city, cityData}: MainProps) => {
                     priority
                 />
                 <h1 className={mainTextStyle}>{city}</h1>
-                <div onTouchStart={(e) => onTouchHandler(e)}>TOUCH<h1>TOUCHHHH</h1>
-                <h1>{word}</h1>
-                </div>
-
                 <div className='w-[90vw] absolute top-32  left-1/2 transform -translate-x-1/2  '>
                     <div className="max-lg:grid max-lg:grid-cols-10 ">
                         {/*   siori */}
@@ -99,16 +89,14 @@ const Main = ({city, cityData}: MainProps) => {
                                     </div>
                                 </div>
                                 {category.map(item => (
-                                    <div
-                                        // onClick ={(e) => onClickHandler(e)}
-                                        onTouchStart={event => onClickHandler(event)}
+                                    <button
+                                        onClick ={(e) => onClickHandler(e)}
                                         key={item}
                                         className=' bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
-                                        <div
-                                            className={`z-[999] lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
+                                        <div className={`lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                             <h1 className='text-center'>{item.charAt(0).toUpperCase() + item.slice(1)}</h1>
                                         </div>
-                                    </div>))}
+                                    </button>))}
                             </div>
 
                         </div>
