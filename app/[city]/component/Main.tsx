@@ -19,6 +19,7 @@ const Main = ({city, cityData}: MainProps) => {
     const [image, setImage] = useState<StaticImageData | undefined>()
     const [showCategory, setShowCategory] = useState('all')
     const [posts, setPosts] = useState<Post[]>(cityData.posts)
+    const [word, setWord] = useState<string>('')
 
     useEffect(() => {
         cityData.posts && setPosts(cityData.posts)
@@ -59,6 +60,7 @@ const Main = ({city, cityData}: MainProps) => {
 
     const onTouchHandler = (e: React.TouchEvent<HTMLDivElement>) => {
         console.log(e.currentTarget.innerText)
+        setWord(e.currentTarget.innerText)
     }
 
     return (
@@ -77,7 +79,9 @@ const Main = ({city, cityData}: MainProps) => {
                     priority
                 />
                 <h1 className={mainTextStyle}>{city}</h1>
-                <div onTouchStart={(e) => onTouchHandler(e)}>TOUCH<h1>TOUCHHHH</h1></div>
+                <div onTouchStart={(e) => onTouchHandler(e)}>TOUCH<h1>TOUCHHHH</h1>
+                <h1>{word}</h1>
+                </div>
 
                 <div className='w-[90vw] absolute top-32  left-1/2 transform -translate-x-1/2  '>
                     <div className="max-lg:grid max-lg:grid-cols-10 ">
