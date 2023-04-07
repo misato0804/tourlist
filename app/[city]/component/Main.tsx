@@ -57,6 +57,10 @@ const Main = ({city, cityData}: MainProps) => {
         font-extrabold
     `
 
+    const onTouchHandler = (e: React.TouchEvent<HTMLDivElement>) => {
+        console.log(e.currentTarget.innerText)
+    }
+
     return (
         <div className='relative w-screen h-screen'>
             <Suspense fallback={<Loading/>}>
@@ -73,6 +77,7 @@ const Main = ({city, cityData}: MainProps) => {
                     priority
                 />
                 <h1 className={mainTextStyle}>{city}</h1>
+                <div onTouchStart={(e) => onTouchHandler(e)}>TOUCH<h1>TOUCHHHH</h1></div>
 
                 <div className='w-[90vw] absolute top-32  left-1/2 transform -translate-x-1/2  '>
                     <div className="max-lg:grid max-lg:grid-cols-10 ">

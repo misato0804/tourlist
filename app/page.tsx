@@ -2,6 +2,7 @@ import getCities from "@/lib/getCities";
 import Image from "next/image";
 import main from "../public/image/japan-main-image.png"
 import Button from "@/app/component/Button";
+import React from "react";
 
 export default async function Home() {
     const citiesData: Promise<City[]> = getCities();
