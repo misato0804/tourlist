@@ -52,17 +52,7 @@ const Main = ({city, postData}: MainProp) => {
                                     className='text-center bg-cyan-950 rounded-md text-[#fff] text-xs py-0.5 px-2'>{cate}</h6>
                             )}
                         </div>
-                        <div className='md:grid md:grid-cols-7 gap-3 px-4 py-2 mt-5 md:mt-10'>
-                            <div className='col-span-4 my-3'>
-                                <p className=''>a museum showcasing the work of the Japanese animation studio Studio
-                                    Ghibli. It is
-                                    located in Inokashira Park in Mitaka, a western city of Tokyo, Japan. The museum
-                                    combines features of a museum, technology museum, and a fine arts museum, and is
-                                    dedicated to the art and technique of animation. Features include a replica of the
-                                    Catbus from My Neighbor Totoro (1988), a café, bookstore, rooftop garden, and a
-                                    theater
-                                    for exclusive short films by Studio Ghibli.</p>
-                            </div>
+                        <div className=' px-4 py-2 mt-5 md:mt-10'>
                             <GoogleMap center={postData.location}/>
                         </div>
                         <div className='flex justify-evenly my-3'>
