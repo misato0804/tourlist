@@ -38,7 +38,6 @@ const Main = ({city, cityData}: MainProps) => {
         setPosts(arr)
     }
 
-
     if (!image) {
         return <Loading/>
     }
@@ -90,7 +89,7 @@ const Main = ({city, cityData}: MainProps) => {
                                 </div>
                                 {category.map(item => (
                                     <button
-                                        onClick ={(e) => onClickHandler(e)}
+                                        onMouseDown ={(e) => onClickHandler(e)}
                                         key={item}
                                         className=' bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
                                         <div className={`lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
