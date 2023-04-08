@@ -21,8 +21,16 @@ const Main = ({city, cityData}: MainProps) => {
     const [posts, setPosts] = useState<Post[]>(cityData.posts)
 
     useEffect(() => {
-        const posts = cityData.posts.filter(post => post.category.includes(showCategory))
-        cityData.posts && setPosts(posts)
+        setPosts(cityData.posts)
+    }, [])
+
+    useEffect(() => {
+        console.log(showCategory)
+        if (showCategory !== 'all') {
+            const posts = cityData.posts.filter(post => post.category.includes(showCategory))
+            cityData.posts && setPosts(posts)
+        }
+
     }, [showCategory])
 
     useEffect(() => {
@@ -32,17 +40,9 @@ const Main = ({city, cityData}: MainProps) => {
         else throw new Error('No image')
     }, [city])
 
-
-    const onClickHandler = (e: any) => {
-        const clickedCategory = e.currentTarget.innerText.toLowerCase()
-        const arr = cityData.posts.filter(post => post.category.includes(clickedCategory))
-        setPosts(arr)
-    }
-
     if (!image) {
         return <Loading/>
     }
-
 
     const mainTextStyle = `
         absolute 
@@ -78,12 +78,13 @@ const Main = ({city, cityData}: MainProps) => {
                         {/*   siori */}
                         <div className='w-full max-[500px]:col-span-3 max-lg:col-span-2 lg:overflow-x-scroll '>
 
-                            <div className={`max-lg:grid max-lg:grid-rows-11 max-lg:gap-2 max-lg:h-3/4 lg:flex lg:w-[150%]`}>
+                            <div
+                                className={`max-lg:grid max-lg:grid-rows-11 max-lg:gap-2 max-lg:h-3/4 lg:flex lg:w-[150%]`}>
 
                                 <div
                                     className='bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:py-2 lg:rounded-t-md'>
                                     <div
-                                        onClick ={(e: React.TouchEvent | React.MouseEvent) => setPosts(cityData.posts)}
+                                        onClick={(e: React.TouchEvent | React.MouseEvent) => setPosts(cityData.posts)}
                                         className={`z-[999] w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                         <h1 className='text-center'>All</h1>
                                     </div>
@@ -93,7 +94,8 @@ const Main = ({city, cityData}: MainProps) => {
                                         onClick={(e) => setShowCategory(item)}
                                         key={item}
                                         className=' bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
-                                        <div className={`lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
+                                        <div
+                                            className={`lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
                                             <h1 className='text-center'>{item.charAt(0).toUpperCase() + item.slice(1)}</h1>
                                         </div>
                                     </button>))}
@@ -102,7 +104,8 @@ const Main = ({city, cityData}: MainProps) => {
                         </div>
 
                         {/*  main */}
-                        <div className='w-full h-[75vh] py-8 px-4 bg-slate-300 h-1/4 max-[500px]:col-span-7 max-lg:col-span-8'>
+                        <div
+                            className='w-full h-[75vh] py-8 px-4 bg-slate-300 h-1/4 max-[500px]:col-span-7 max-lg:col-span-8'>
                             <div className='w-full h-full grid lg:grid-cols-2 gap-5 overflow-scroll'>
                                 {posts.length > 0 && posts.map(post => <PostCard key={post.id} post={post}/>)}
                             </div>
