@@ -21,8 +21,9 @@ const Main = ({city, cityData}: MainProps) => {
     const [posts, setPosts] = useState<Post[]>(cityData.posts)
 
     useEffect(() => {
-        cityData.posts && setPosts(cityData.posts)
-    }, [])
+        const posts = cityData.posts.filter(post => post.category.includes(showCategory))
+        cityData.posts && setPosts(posts)
+    }, [showCategory])
 
     useEffect(() => {
         if (city === 'Tokyo') setImage(Tokyo)
@@ -89,9 +90,7 @@ const Main = ({city, cityData}: MainProps) => {
                                 </div>
                                 {category.map(item => (
                                     <button
-                                        onMouseDown ={(e) => {
-                                            setPosts(cityData.posts.filter(post => post.category.includes(e.currentTarget.innerText.toLowerCase())))
-                                        }}
+                                        onClick={(e) => setShowCategory(item)}
                                         key={item}
                                         className=' bg-slate-300 max-lg:rounded-s-md flex px-1 items-center text-sm font-bold cursor-pointer lg:w-[15rem] lg:rounded-t-md lg:ml-2'>
                                         <div className={`lg:py-3 w-full flex px-1 items-center justify-center h-[70%] hover:hover:bg-slate-500`}>
